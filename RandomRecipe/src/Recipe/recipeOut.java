@@ -14,10 +14,10 @@ import Judge.judge;
 
 public class recipeOut {
 	
-	private int inId;
-	private int idCount;	
-	private String sql;
-	private String menuName;
+	private int inId = 0;
+	private int idCount = 0;	
+	private String sql = null;
+	private String menuName = null;
 	
 	private Connection con = null;
 	private PreparedStatement pstmt =  null;
@@ -25,11 +25,11 @@ public class recipeOut {
 	
 	private Scanner s = new Scanner(System.in);
 	private Random r = new Random();
-
 	
 	//  コンストラクタすることなし
 	public recipeOut() { }
 		
+	
 	public void randomRecipe() throws SQLException,Exception {
 		
 		//  DBのidが一番でかいレコード(一番最後に入力されたレコード)のidカラムを取得
@@ -39,8 +39,6 @@ public class recipeOut {
 		this.rs.next();
 		//  結果格納
 		this.idCount = this.rs.getInt("id");
-		
-//		System.out.println(this.idCount);　idCountにセットされてるかの確認
 		
 		System.out.println("ランダムで決定します");
 		
@@ -110,7 +108,6 @@ public class recipeOut {
 				//  nameカラムを取得
 				this.menuName = rs.getString("name");
 				
-				
 				//  取得結果を材料配列と一緒にハッシュマップへ
 				material.put(this.menuName,rsS);
 			}
@@ -139,23 +136,19 @@ public class recipeOut {
 	}
 
 	
-	
 	public void allRecipe() throws SQLException, Exception {
 		
 		Map<String, String[]> material = new HashMap<>();
-		String materialSet;
+		String materialSet = null;
 		String[] rsS = null;
 		
 		System.out.println("過去入力した一覧を表示します");
 		
 		while(true) {
-//			System.out.println("材料名を入力(全て全角カナで入力)");
-//			String inMaterial = this.s.next();
 			
 			//  レコードすべて抜き出し		
 			this.sql = "SELECT * FROM recipe";
 			this.pstmt = this.con.prepareStatement(this.sql);
-//			pstmt.setString(1,  "%" + inMaterial + "%");
 			
 			//  結果格納
 			this.rs = this.pstmt.executeQuery();
@@ -170,20 +163,14 @@ public class recipeOut {
 				//  nameカラムを取得
 				this.menuName = rs.getString("name");
 				
-				
 				//  取得結果を材料配列と一緒にハッシュマップへ
 				material.put(this.menuName,rsS);
 			}
-			
-			//  部分一致した材料が入っている料理名を全て表示
-//			System.out.println("あなたのレシピの中で" + inMaterial + "を使う料理は");
-//					
+					
 			for (String key : material.keySet()) {
 		        System.out.println(key + ":" + Arrays.toString(material.get(key)));
 			}
-//			System.out.println("です");
-//			 
-//			
+		
 			System.out.println("メニューに戻る：1");
 			int i = this.s.nextInt();
 				if(i == 1) {
@@ -201,4 +188,5 @@ public class recipeOut {
 	
 	public void setCon(Connection con) {
 		this.con = con;
-	}}
+	}
+}

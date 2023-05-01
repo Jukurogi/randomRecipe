@@ -10,17 +10,16 @@ import Judge.judge;
 
 public class recipeIn {
 	
-	private Scanner s = new Scanner(System.in);
-	
-	private int id;
-	
-	private String name;
-	private String material;
-	private String sql;
+	private int id = 0;
+	private String name = null;
+	private String material = null;
+	private String sql = null;
 
 	private PreparedStatement pstmt =  null;
 	private Connection con = null;
 	private ResultSet rs = null;
+	
+	private Scanner s = new Scanner(System.in);	
 	
 	//  コンストラクタすることなし
 	public recipeIn() { }
@@ -28,7 +27,8 @@ public class recipeIn {
 	
 	//	レシピ入力
 	public void menu() throws SQLException, Exception  {
-			
+		
+		while(true) {
 		//  DBのidが一番でかいレコード(一番最後に入力されたレコード)のidカラムを取得
 			this.sql = "SELECT MAX(id) AS id FROM recipe";
 			this.pstmt = this.con.prepareStatement(this.sql);
@@ -38,8 +38,6 @@ public class recipeIn {
 			this.id = this.rs.getInt("id");
 			// 最終履歴数＋1の数にする
 			this.id++;
-
-		while(true) {
 			
 			// レコード入力開始
 			this.sql = "INSERT INTO recipe(id, name, material) VALUES(?, ?, ?)";
@@ -59,7 +57,6 @@ public class recipeIn {
     		this.material = this.s.next();
 			pstmt.setString(3, this.material);
 			
-			//  executeUpdate()ってintで返ってくるって書いてたけどこれいるのか？？
 			int n = this.pstmt.executeUpdate();
 			
     		//  毎回終了するのかどうか確認
@@ -75,6 +72,7 @@ public class recipeIn {
 		j.judge1();
 	}	
 
+	
 	public void setCon(Connection con) {
 		this.con = con;
 	}

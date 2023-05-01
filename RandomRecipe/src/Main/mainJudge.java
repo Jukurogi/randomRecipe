@@ -13,10 +13,11 @@ class mainJudge {
     	
     	Connection con = null;
     	judge j = new judge();
-    	
-    	try  { 
+//    	System.out.println(System.getProperty("java.class.path"));
+
+    	try{
     		// データベースに接続
-    		con = DriverManager.getConnection( "jdbc:mysql:テーブル名が入ります", 
+    		con = DriverManager.getConnection( "jdbc:テーブル名が入ります", 
     											"idが入ります", 
     											"パスワードが入ります");
     		System.out.println("データベースに接続しました");
@@ -41,4 +42,4 @@ class mainJudge {
             }
         }
     }
-  }
+}
