@@ -4,7 +4,8 @@
 料理のレシピを入力して自分のみのレシピ集を作り、そこからランダムでレシピを出力したり、材料からレシピを出力したりするシステムです。  
 拙いコードにはなりますが、ご覧になっていただけると幸いです。  
 実際動いている状態はこのREAD MEに画像として添付させていたただいております。  
-    
+コードをご覧いただく際は、![main](./RandomRecipe/src/Main)→![judge](./RandomRecipe/src/Judge)→![in or out](./RandomRecipe/src/Recipe/recipeIn.java)とご覧いただくとスムーズかと存じます。  
+
 ## 環境  
 xampp phpmyadmin 5.2.0(DB)  
 java eclipse java17
