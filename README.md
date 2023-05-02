@@ -28,7 +28,7 @@ java eclipse java17
   
   
 ## 今まで入力してきたレシピの中から該当する材料を使ったレシピを出力  
-![recipeOut2.jpg](./images/recipeOut2.jpg)  
+![recipeOut23.jpg](./images/recipeOut23.jpg)  
   
 #### 使いたい材料名を入力→DBに保存してあるmaterialと一致するものを出力  
   
