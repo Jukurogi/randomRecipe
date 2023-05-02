@@ -12,7 +12,6 @@ public class judge {
 	private Scanner i = new Scanner(System.in);
 	private recipeOut rOut = new recipeOut();
 
-	
 	private Connection con = null;	
 	
 	public void judge1() throws SQLException, Exception {

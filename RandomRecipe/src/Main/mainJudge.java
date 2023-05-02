@@ -17,9 +17,9 @@ class mainJudge {
 
     	try{
     		// データベースに接続
-    		con = DriverManager.getConnection( "jdbc:テーブル名が入ります", 
-    											"idが入ります", 
-    											"パスワードが入ります");
+    		con = DriverManager.getConnection( "jdbc:mysql://localhost/recipe", 
+    											"livebusiness", 
+    											"password");
     		System.out.println("データベースに接続しました");
     		
     		j.setCon(con);

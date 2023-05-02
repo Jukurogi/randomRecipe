@@ -81,14 +81,16 @@ public class recipeOut {
 	public void materialRecipe() throws SQLException, Exception {
 		
 		Map<String, String[]> material = new HashMap<>();
-		String materialSet;
+		String materialSet = null;;
+		String inMaterial = null;;
 		String[] rsS = null;
 		
 		System.out.println("材料から決定します");
 		
 		while(true) {
+			material.clear();
 			System.out.println("材料名を入力(全て全角カナで入力)");
-			String inMaterial = this.s.next();
+			inMaterial = this.s.next();
 			
 			//  材料は一文で入力されているので入力された材料と部分一致を使用		
 			this.sql = "SELECT * FROM recipe WHERE material LIKE ?";
@@ -127,7 +129,6 @@ public class recipeOut {
 					this.rs.close();
 					break;
 				}
-			
 		}
 		judge j = new judge();
 		j.setCon(this.con);
@@ -184,7 +185,7 @@ public class recipeOut {
 		j.judge1();
 		
 	}
-
+	
 	
 	public void setCon(Connection con) {
 		this.con = con;
